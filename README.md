@@ -15,6 +15,8 @@ Login -> Dashboard -> CompanyProfile -> CreateBudget -> FillClientData -> AddIte
 
 #### Entities
 
+![](./tables.png)
+
 ```
   User      (1 -> 1) Company
   User      (1 -> N) Budgets
