@@ -31,7 +31,7 @@ Login -> Dashboard -> CompanyProfile -> CreateBudget -> FillClientData -> AddIte
 
 #### Routes
 
-``
+```
 Auth Routes:
   POST   /api/auth/register
   POST   /api/auth/verify-email
@@ -40,12 +40,14 @@ Auth Routes:
   GET    /api/auth/me
   POST   /api/auth/change-password
   POST   /api/auth/logout
-
+```
+```
 Auth response:
   - Login/change-password retornam dados do usuário no body:
     { "name": "...", "email": "..." }
   - O JWT enviado em cookie HttpOnly `authToken`.
-
+```
+```
 Budget Routes:
   GET    /api/budgets?page=0&size=20
   POST   /api/budgets
@@ -54,20 +56,25 @@ Budget Routes:
   PATCH  /api/budgets/{id}/status
   DELETE /api/budgets/{id}
   GET    /api/budgets/{id}/pdf
-
+```
+```
 Service Catalog Routes:
   GET    /api/services?page=0&size=20
   POST   /api/services
   PUT    /api/services/{id}
   DELETE /api/services/{id}
 
+```
+```
 Company Routes:
   GET    /api/company
   PUT    /api/company
   POST   /api/company/logo
   GET    /api/company/logo
   DELETE /api/company/logo
+```
 
+```
 Health Route:
   GET    /actuator/health
 ```
@@ -76,10 +83,10 @@ Health Route:
 
 #### Stack
 
-Angular
-  - @OpenPDF 1.3.39
+Angular 21
   
-Spring
+  
+Spring Boot 4.0.6
 - Web MVC
 - Mail
 - Validation
@@ -89,18 +96,20 @@ Spring
 - JDBC Driver
 - Data JPA
   
-PostgreSQL 18
+@OpenPDF 1.3.39
+
+PostgreSQL 16
 
 ------------------
 
 #### Requirements
 
-- Java 17+
+- Java 17^
 - Maven
-- Node.js
+- Node.js 20.19^
 - Docker with Compose plugin
 - PostgreSQL container
-
+  
 ------------------
 
 #### Structure
