@@ -16,30 +16,58 @@ Login -> Dashboard -> CompanyProfile -> CreateBudget -> FillClientData -> AddIte
 #### Entities
 
 ```
-    User    (1 -> 1) Company
-    User    (1 -> N) Budgets
-    Budgets (1 -> 1) BudgetItems
-    Budgets (N -> 1) Client
+  User      (1 -> 1) Company
+  User      (1 -> N) Budgets
+  User      (1 -> N) ServiceItem
+  User      (1 -> N) EmailVerificationToken
+  User      (1 -> N) AuditLog
+
+  Budgets    (1 -> N) BudgetItem
+  BudgetItem (N -> 1) Budgets
 ```
 ------------------
 
 #### Routes
 
-*Controller Routes:*
-```
-        GET    /api/budgets
-        POST   /api/budgets
-        GET    /api/budgets/{id}
-        PUT    /api/budgets/{id}
-        DELETE /api/budgets/{id}
-        GET    /api/budgets/{id}/pdf
-```
-        
-*Auth Routes (also for Angular and Mobile):*
-```
-        POST /api/auth/register
-        POST /api/auth/login
-        Return: { "token": "jwt_token" }
+``
+Auth Routes:
+  POST   /api/auth/register
+  POST   /api/auth/verify-email
+  POST   /api/auth/resend-verification
+  POST   /api/auth/login
+  GET    /api/auth/me
+  POST   /api/auth/change-password
+  POST   /api/auth/logout
+
+Auth response:
+  - Login/change-password retornam dados do usuário no body:
+    { "name": "...", "email": "..." }
+  - O JWT enviado em cookie HttpOnly `authToken`.
+
+Budget Routes:
+  GET    /api/budgets?page=0&size=20
+  POST   /api/budgets
+  GET    /api/budgets/{id}
+  PUT    /api/budgets/{id}
+  PATCH  /api/budgets/{id}/status
+  DELETE /api/budgets/{id}
+  GET    /api/budgets/{id}/pdf
+
+Service Catalog Routes:
+  GET    /api/services?page=0&size=20
+  POST   /api/services
+  PUT    /api/services/{id}
+  DELETE /api/services/{id}
+
+Company Routes:
+  GET    /api/company
+  PUT    /api/company
+  POST   /api/company/logo
+  GET    /api/company/logo
+  DELETE /api/company/logo
+
+Health Route:
+  GET    /actuator/health
 ```
 
 ------------------
@@ -50,12 +78,14 @@ Angular
   - @OpenPDF 1.3.39
   
 Spring
-  - Spring Web
-  - Spring Data JPA
-  - Spring Security
-  - PostgreSQL Driver
-  - Validation
-  - Lombok
+- Web MVC
+- Mail
+- Validation
+- Actuator
+- Security + JWT
+- Flyway
+- JDBC Driver
+- Data JPA
   
 PostgreSQL 18
 
@@ -74,13 +104,16 @@ PostgreSQL 18
 #### Structure
 
 ```
+pages/home
 pages/login
 pages/register
+pages/verify-email
 pages/dashboard
+pages/account
 pages/company
 pages/services
 pages/budget-form
-pages/budget-view
+pages/budget-view    
 
 services/auth
 services/budget
