@@ -29,6 +29,7 @@ Understand more about Full-stack web engineering:
     Integration of an opensource system to generate PDF,
     Unit, Integration, Validation tests, 
     Model and maintain a PostgreSQL database with real data,
+    Environment and configuration handling,
     OpenAPI Specifications with Swagger.
 
 Things learn and improve:
