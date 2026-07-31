@@ -5,6 +5,70 @@ A register/login, configure company data, manage reusable service items, create 
 
 ------------------
 
+# Goal
+Project goal:
+``` 
+    Make a web platform, that have users, and let the same users:
+        1. Manage their company profiles (name, address, logo),
+        2. Define predefined "Services" or products that the user company disposes.
+        3. Create, manage and download as PDF budgets of services you're planning to send to clients, informing: client information, services to be done, discount (from 0% to 100%), and further observations.
+```
+Learning goal:
+
+```
+Understand more about Full-stack web engineering:
+    Auto SSL certificate generation and Reverse proxy with Caddy, 
+    Authentication with OAuth2.0 + Google APIs and JWT + user memory cache,
+    System deploying (AWS),
+    Create and integrate REST APIs,
+    Frontend UI and UX design,
+    Use of a production-grade frontend framework: Angular,
+    Learn deeper concepts of Java and SpringBoot such as how internal tools work,
+    Manage and use SpringBoot dependencies,
+    System security and prevention such as implementing DTOs, rate limiting by IP and e-mail,
+    Integration of an opensource system to generate PDF,
+    Unit, Integration, Validation tests, 
+    Model and maintain a PostgreSQL database with real data,
+    OpenAPI Specifications with Swagger.
+
+Things learn and improve:
+    Enhanced Log system,
+    Observability using Terraform and Grafana,
+    Message broker with RabbitMQ.
+    
+```
+# Divide and conquer thought process
+
+```
+Backend:
+    1. Think about and model the system flow.
+    2. Think about and model the Database entities relationships.
+    3. Implement all the models created as code.
+    4. Wrap the project in a docker container.
+
+Database: 
+    1. Create the PostgreSQL database following the modeled entities and relationships.
+    2. Wrap the database in a docker container.
+
+Frontend:
+    1. Think about and model the UI/UX design
+        Why Angular is a good framework for this project?
+        A: For the user perspective, it's better to navigate in a system that deliver pages instantly.
+        A2: Wanted put in practice the use of a good, enterprise-grade frontend framework.
+    2. Study a viable project structure in Angular.
+    3. Implement the UI following the defined structure.
+    4. Integrate the frontend with the backend APIs.
+    5. Wrap the frontend in a docker container.
+
+HTTPS certificate server with Caddy.
+
+Project containers are composed with docker compose.
+
+
+```
+
+---------------
+
 #### Project flow diagram
 
 ![](./budgetsystem-flow.png)
@@ -104,7 +168,7 @@ PostgreSQL 16
 
 #### Requirements
 
-- Java 17^
+- Java 21
 - Maven
 - Node.js 20.19^
 - Docker with Compose plugin
@@ -134,9 +198,7 @@ services/service-item
 -------------------
 
 ###### TODOS
-Company profile,
-Handle NFS-e,
-Mobile app,
-Play Store Version,
+Handle Brazil NFS-e,
+Port to mobile,
 
 
