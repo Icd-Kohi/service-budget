@@ -7,7 +7,7 @@ A register/login, configure company data, manage reusable service items, create 
 
 #### Project flow diagram
 
-![](./diagram.png)
+![](./budgetsystem-flow.png)
 
 ```
 Login -> Dashboard -> CompanyProfile -> CreateBudget -> FillClientData -> AddItems -> ApplyDiscount -> Generate PDF.
